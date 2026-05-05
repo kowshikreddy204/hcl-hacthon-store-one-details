@@ -49,7 +49,8 @@ class SalesData(BaseModel):
 
 @app.get("/")
 def root():
-    return {"message": "FastAPI ETL is running 🚀"}
+    df = load_data()
+    return df.to_dict(orient="records")
 
 
 @app.get("/health")
